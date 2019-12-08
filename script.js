@@ -42,45 +42,58 @@ function startQuiz() {
     console.log("Quiz started")
     // Add class to hide once clicked
     // Add code to start Timer function
-    askQuestion(i);
+    askQuestion();
 }
 
-function askQuestion(x) {
-    console.log("question asked")
-    ask.textContent = q[x].title;
-    console.log("choices shown")
-    for (var c = 0; c < q[x].choices.length; c++) {
+function askQuestion() {
+    console.log("question asked");
+    ask.textContent = q[i].title;
+    showChoices();
+    checkAnswer();
+    nextBtn.addEventListener("click", nextQuestion);
+}
+
+function showChoices() {
+    console.log("choices shown");
+    for (c = 0; c < q[i].choices.length; c++) {
         var choice = document.createElement("button")
-        choice.textContent = q[x].choices[c];
+        choice.textContent = q[i].choices[c];
         answers.appendChild(choice);
     }
-    // }
-    answers.addEventListener("click", function (event) {
-        console.log("answer selected")
-        if (event.target.matches("button")) {
-            var ans = event.target.innerHTML;
-            console.log(ans);
-            if (ans === q[x].answer) {
-                result.textContent = "Good Job!";
-                answerCheck.append(result);
-            } else {
-                result.textContent = "Try Again!";
-                answerCheck.append(result);
-            }
-        }
-    })
-    nextBtn.addEventListener("click", function () {
-        answers.innerHTML = "";
-        result.innerHTML = "";
-        x++;
-        console.log(x);
-        if (x === q.length) {
-            alert("complete!")
-            return
+}
+
+function checkAnswer() {
+    answers.addEventListener("click", grade)
+}
+
+function grade() {
+    console.log("answer selected")
+    if (event.target.matches("button")) {
+        var ans = event.target.innerHTML;
+        console.log(ans);
+        if (ans === q[i].answer) {
+            result.textContent = "Good Job!";
+            answerCheck.append(result);
         } else {
-            askQuestion(x);
+            result.textContent = "Try Again!";
+            answerCheck.append(result);
         }
-    })
+    }
+}
+
+function nextQuestion() {
+    console.log("next question");
+    answers.innerHTML = "";
+    result.innerHTML = "";
+    i++;
+    console.log(i);
+    if (i === q.length) {
+        question.innerHTML = "";
+        completed();
+    } else {
+        askQuestion(i);
+    }
+
 }
 
 
