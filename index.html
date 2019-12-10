@@ -14,11 +14,11 @@
 <body>
     <nav class="navbar">
         <h3>View High Scores</h3>
-        <h3 id="timer"></h3>
+        <h3>Time Left:<span id="timer"> 25</span></h3>
     </nav>
     <h1>CODE QUIZ!!</h1>
     <button id="startButton">Start!</button>
-    <div class="container">
+    <div id="quiz" class="container">
         <div class="row">
             <div class="col">
                 <h2 id="question"></h2>
@@ -28,11 +28,40 @@
             <div id="answers" class="col">
             </div>
             <div id="result">
-
             </div>
-            <button id="nextBtn">Next</button>
+            <button id="nextBtn" class="hide">Next</button>
         </div>
+    </div>
+    <div id="yourScore" class="container hide">
+        <div class="row">
+            <div class="col">
+                <h2 id="question">Your score is</h2>
+            </div>
+        </div>
+        <div class="row">
+            <h1 id="finalScore" class="col"></h1>
+            <div id="result">
+                <input id="player" type="text" placeholder="Enter Initials">
+                <button id="submitBtn">Submit</button>
+            </div>
 
+        </div>
+    </div>
+    <div id="highScores" class="container hide">
+        <div class="row">
+            <div class="col">
+                <h2 id="highScoreH">High Scores</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <ul id="scoreList">
+
+
+                </ul>
+            </div>
+
+        </div>
     </div>
 
     <script src="script.js"></script>
