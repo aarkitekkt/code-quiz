@@ -1,32 +1,7 @@
-var q = [
-    {
-        title: "Commonly used data types DO NOT include:",
-        choices: ["strings", "booleans", "alerts", "numbers"],
-        answer: "alerts"
-    },
-    {
-        title: "The condition in an if / else statement is enclosed within ____.",
-        choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
-        answer: "parentheses"
-    },
-    {
-        title: "Inside which HTML element do we put the JavaScript?",
-        choices: ["<javascript>", "<link>", "<js>", "<script>"],
-        answer: "&lt;script&gt;"
-    },
-    {
-        title: "How do you define a function?",
-        choices: ["function = myFunction", "function myFunction()", "function.myFunction", "fun myFunction()"],
-        answer: "function myFunction()"
-    },
-    {
-        title: "How do you define a string?",
-        choices: ["(string)", "string = myString", "'string'", "string()"],
-        answer: "'string'"
-    }
-]
+//Delcare global Variables
+
 var timeEl = document.querySelector("#timer");
-var timeLeft = 25;
+var timeLeft = 75;
 var ask = document.querySelector("#question");
 var answers = document.querySelector("#answers");
 var startBtn = document.querySelector("#startButton");
@@ -40,6 +15,8 @@ var score = document.querySelector("#finalScore");
 var playerName = document.querySelector("#player");
 var HighScoreContainer = document.querySelector("#highScores");
 var highScoresEl = document.querySelector("#scoreList");
+var highScoreList = [];
+//Start Quiz on button click
 
 startBtn.addEventListener("click", startQuiz)
 
@@ -88,7 +65,7 @@ function grade() {
         } else {
             result.textContent = "Try Again!";
             answerCheck.append(result);
-            timeLeft += -5;
+            timeLeft += -15;
         }
     }
 }
@@ -124,6 +101,8 @@ function startTimer() {
     }, 1000);
 }
 
+//Present player with score after quiz is complete
+
 function completed() {
     console.log("Quiz Complete!");
     quizContainer.setAttribute("class", "hide");
@@ -133,21 +112,31 @@ function completed() {
     score.innerHTML = timeLeft;
 }
 
+//Take player input and save to local storage, then render it into high score list
+
 document.querySelector("#submitBtn").addEventListener("click", function () {
     console.log(playerName.value);
     console.log(timeLeft);
-    localStorage.setItem("player", playerName.value);
-    localStorage.setItem("score", timeLeft);
-    var playerInitials = document.createElement("li");
-    var playerScore = document.createTextNode("score");
-    playerInitials.textContent = localStorage.getItem("player");
-    playerScore.textContent = localStorage.getItem("score");
-    highScoresEl.appendChild(playerInitials);
-    playerInitials.appendChild(playerScore);
+    highScoresEl.innerHTML = "";
+    highScoreList.push({ player: playerName.value, score: timeLeft });
+    localStorage.setItem("High Scores", JSON.stringify(highScoreList));
+    var storedScores = JSON.parse(localStorage.getItem("High Scores"));
+    highScoreList = storedScores;
+    for (var i = 0; i < highScoreList.length; i++) {
+        var playerLi = highScoreList[i].player + " - " + highScoreList[i].score;
+        var li = document.createElement("li");
+        li.textContent = playerLi;
+        li.setAttribute("data-index", i);
+        highScoresEl.appendChild(li);
+    }
     playerName.value = "";
+    console.log(highScoreList);
+    console.log(li);
     document.querySelector("#inputs").setAttribute("class", "hide");
     document.querySelector("#newButtons").removeAttribute("class", "hide");
 })
+
+//Give player options to retake quiz or view high scores
 
 document.querySelector("#highScoreNav").addEventListener("click", function () {
     viewHighScores();
@@ -157,25 +146,20 @@ document.querySelector("#viewScoresBtn").addEventListener("click", function () {
     viewHighScores();
 })
 
-document.querySelector("#tryAgainBtn").addEventListener("click", function () {
-    i = 0;
-    timeLeft = 25;
-    yourScoreContainer.setAttribute("class", "hide");
-    HighScoreContainer.setAttribute("class", "hide");
-    startBtn.removeAttribute("class", "hide");
-    startBtn.setAttribute("class", "btn btn-info btn-lg btn-block");
-    answers.innerHTML = "";
-})
+document.querySelector("#tryAgainBtn").addEventListener("click", retakeQuiz);
 
-document.querySelector("#takeQuiz").addEventListener("click", function () {
+document.querySelector("#takeQuiz").addEventListener("click", retakeQuiz);
+
+
+function retakeQuiz() {
     i = 0;
-    timeLeft = 25;
+    timeLeft = 75;
     yourScoreContainer.setAttribute("class", "hide");
     HighScoreContainer.setAttribute("class", "hide");
     startBtn.removeAttribute("class", "hide");
     startBtn.setAttribute("class", "btn btn-info btn-lg btn-block");
     answers.innerHTML = "";
-})
+}
 
 function viewHighScores() {
     HighScoreContainer.removeAttribute("class", "hide");

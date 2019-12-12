@@ -1,4 +1,4 @@
-var questions = [
+var q = [
     {
         title: "Commonly used data types DO NOT include:",
         choices: ["strings", "booleans", "alerts", "numbers"],
@@ -12,7 +12,7 @@ var questions = [
     {
         title: "Inside which HTML element do we put the JavaScript?",
         choices: ["<javascript>", "<link>", "<js>", "<script>"],
-        answer: "<script>"
+        answer: "&lt;script&gt;"
     },
     {
         title: "How do you define a function?",
