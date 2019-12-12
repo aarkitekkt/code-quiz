@@ -14,3 +14,9 @@ When the page is first loaded, the player is presented with a 'start' button tha
 
 After the quiz is complete, they user may input their initials to submit along with their score.  They can then re take the quiz or view the list of high scores which have been saved in local storage.
 
+##ScreenGrabs
+
+https://github.com/aarkitekkt/code-quiz/blob/master/screengrabs/correct.JPG
+https://github.com/aarkitekkt/code-quiz/blob/master/screengrabs/highScores.JPG
+https://github.com/aarkitekkt/code-quiz/blob/master/screengrabs/start.JPG
+https://github.com/aarkitekkt/code-quiz/blob/master/screengrabs/wrong.JPG
