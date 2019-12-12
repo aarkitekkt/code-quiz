@@ -6,18 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Code Quiz</title>
+    <link href="https://fonts.googleapis.com/css?family=Comfortaa&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
 
-<body>
-    <nav class="navbar">
-        <h3>View High Scores</h3>
-        <h3>Time Left:<span id="timer"> 25</span></h3>
+<body style="background-color: #e7e7e7; font-family: 'Comfortaa', cursive;">
+    <nav id="nav" class="navbar nav mb-5">
+        <h4 id="highScoreNav">View High Scores</h4>
+        <h4>Time Left:<span id="timer"> 25</span></h4>
     </nav>
-    <h1>CODE QUIZ!!</h1>
-    <button id="startButton">Start!</button>
+    <div class="container-fluid">
+        <div id="start" class="container">
+            <h1 class="text-center mb-5"><span id="title">Code Quiz</span></h1>
+            <button id="startButton" class="btn btn-info btn-lg btn-block">Start</button>
+        </div>
+    </div>
     <div id="quiz" class="container">
         <div class="row">
             <div class="col">
@@ -25,42 +30,67 @@
             </div>
         </div>
         <div class="row">
-            <div id="answers" class="col">
+            <div id="answers" class="col card border-0 btn-group-vertical p-0 mb-2">
             </div>
-            <div id="result">
+        </div>
+        <div class="row">
+            <div id="result" class="col-9 px-0">
             </div>
-            <button id="nextBtn" class="hide">Next</button>
+            <div class="col-3 p-0">
+                <button id="nextBtn" class="hide">Next</button>
+            </div>
         </div>
     </div>
-    <div id="yourScore" class="container hide">
+    <div id="yourScore" class="hide">
         <div class="row">
             <div class="col">
-                <h2 id="question">Your score is</h2>
+                <h2 id="question" class="text-center">Your score is</h2>
             </div>
         </div>
-        <div class="row">
-            <h1 id="finalScore" class="col"></h1>
-            <div id="result">
-                <input id="player" type="text" placeholder="Enter Initials">
-                <button id="submitBtn">Submit</button>
+        <div class="row justify-content-center">
+            <div class="col-6">
+                <h1 id="finalScore"></h1>
             </div>
+        </div>
+        <div id="inputs">
+            <div class="row">
+                <div id="result" class="col-6">
+                    <input id="player" class="text-center" type="text" placeholder="Enter Initials">
+                </div>
+                <div class="col-6 px-1">
+                    <button id="submitBtn" class="btn btn-info btn-lg btn-block mb-2">Submit</button>
+                </div>
+            </div>
+        </div>
+        <div id="newButtons">
+            <div class="row">
+                <div class="col-6 px-1">
+                    <button id="tryAgainBtn" class="btn btn-info btn-lg btn-block px-1">Try Again</button>
+                </div>
+                <div class="col-6 px-1">
+                    <button id="viewScoresBtn" class="btn btn-info btn-lg btn-block px-1">View High Scores</button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        </div>
     </div>
     <div id="highScores" class="container hide">
         <div class="row">
             <div class="col">
-                <h2 id="highScoreH">High Scores</h2>
+                <h2 id="highScoreH" class="text-center">High Scores</h2>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <ul id="scoreList">
-
-
+                <ul id="scoreList" class="text-center justify-content-center">
                 </ul>
             </div>
-
+        </div>
+        <div class="row">
+            <div class="col">
+                <button id="takeQuiz" class="btn btn-info btn-lg btn-block">Take Quiz</button>
+            </div>
         </div>
     </div>
 
