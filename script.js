@@ -61,7 +61,7 @@ function grade() {
             result.setAttribute("class", "pt-2");
             answerCheck.append(result);
             nextBtn.removeAttribute("class", "hide");
-            nextBtn.setAttribute("class", "btn btn-info btn-lg btn-block")
+            nextBtn.setAttribute("class", "btn btn-danger btn-lg btn-block")
         } else {
             result.textContent = "Try Again!";
             answerCheck.append(result);
@@ -157,7 +157,7 @@ function retakeQuiz() {
     yourScoreContainer.setAttribute("class", "hide");
     HighScoreContainer.setAttribute("class", "hide");
     startBtn.removeAttribute("class", "hide");
-    startBtn.setAttribute("class", "btn btn-info btn-lg btn-block");
+    startBtn.setAttribute("class", "btn btn-danger btn-lg btn-block");
     answers.innerHTML = "";
 }
 

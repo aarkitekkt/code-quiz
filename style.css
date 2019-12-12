@@ -7,17 +7,17 @@
 }
 
 #quiz {
-    width: 500px;
+    max-width: 500px;
     margin: auto;
 }
 
 #yourScore {
-    width:500px;
+    max-width: 500px;
     margin: auto;
 }
 
 #start {
-    width: 500px;
+    max-width: 500px;
     margin: auto;
     font-family: 'Comfortaa', cursive;
 }
